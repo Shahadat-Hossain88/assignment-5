@@ -1,0 +1,36 @@
+.search{
+    padding: 20px;
+    background-image: linear-gradient(90deg, tomato, black);
+    text-align: center;
+    margin-top: 200px;
+}
+body{
+    background-image: linear-gradient(90deg, black,brown);
+    
+    margin-top: 100px;
+    font-size: 50px;
+    color: burlywood;
+}
+#hungryh1{
+    text-align: center;
+}
+.menu{
+    border: 1px solid green;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    width: 60%;
+    height: 300px;
+    
+}
+#menus{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 10px;
+    
+}
+#menus img {
+    width: 100%;
+    margin-top: 10px;
+}
