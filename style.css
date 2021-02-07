@@ -20,17 +20,24 @@ body{
     padding: 10px;
     text-align: center;
     width: 60%;
-    height: 300px;
+    height: 400px;
     
 }
 #menus{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    grid-column-gap: 0px;
+    grid-column-gap: 10px;
     grid-row-gap: 10px;
     
 }
 #menus img {
     width: 100%;
     margin-top: 10px;
+}
+#menuDetail{
+    margin-top: 10px;
+}
+#menuDetail img{
+    width: 20%;
+    height: 20%;
 }
