@@ -1,4 +1,5 @@
 const searchBtn = document.getElementById('search-btn');
+//search for input 
 searchBtn.addEventListener('click', function () {
     const input = document.getElementById('search-input');
 
@@ -8,45 +9,67 @@ searchBtn.addEventListener('click', function () {
 
 
     document.getElementById('menus').innerHTML = '';
+    document.getElementById('menuDetail').innerHTML = '';
 
 
 })
-
+// meals function
 const displayMenu = menus => {
     // console.log(menus);
     const menusDiv = document.getElementById("menus");
+    const input = document.getElementById('search-input').value;
 
-    menus.forEach(menu => {
+    if (menus == input) {
+        const alertDiv = document.getElementById('alert-div');
+        
+        alertDiv.className = 'alert';
 
-        const menuDiv = document.createElement('div');
-        menuDiv.className = 'menu';
+        const alertInfo = ` 
+             <h1 class=""> ${menu}</h1>
+             <p>NOT FOUND</p>
+             
+         `;
+         
+        const alertsDiv = document.createElement('div');
+        alertDiv.innerHTML = alertInfo;
+        alertDiv.appendChild(alertsDiv);
 
-        const menuInfo = ` 
+    }
+    else {
+        menus.forEach(menu => {
+
+            const menuDiv = document.createElement('div');
+            menuDiv.className = 'menu';
+
+            const menuInfo = ` 
              <img  src='${menu.strMealThumb}'>
              <h1 class=""> ${menu.strMeal}</h1>
          `;
 
-        menuDiv.innerHTML = menuInfo;
-        menusDiv.appendChild(menuDiv);
-        menuDiv.onclick = () => {
-            displayMenuDetails(`${menu.strMeal}`);
-            document.getElementById('menuDetail').innerHTML = '';
-        };
+            menuDiv.innerHTML = menuInfo;
+            menusDiv.appendChild(menuDiv);
+            menuDiv.onclick = () => {
+                displayMenuDetails(`${menu.strMeal}`);
+                document.getElementById('menuDetail').innerHTML = '';
+            };
+        }
+        );
     }
-    );
-}
 
+}
+//ingredient valu input function fetch
 const displayMenuDetails = name => {
     // console.log(name);
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`
     fetch(url)
         .then(res => res.json())
-             
-        .then(data => renderMenuInfo(data.meals[0])); 
-             
-        
+
+        .then(data => renderMenuInfo(data.meals[0]));
+
+
 
 }
+//ingradient function
 const renderMenuInfo = menu => {
     console.log(menu);
     const menuDiv = document.getElementById('menuDetail');
@@ -70,7 +93,7 @@ const renderMenuInfo = menu => {
     `;
 
     const ingredientsDiv = document.createElement('div');
-    ingredientsDiv.innerHTML= ingredients ;
+    ingredientsDiv.innerHTML = ingredients;
     menuDiv.appendChild(ingredientsDiv);
 
 }

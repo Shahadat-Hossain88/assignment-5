@@ -1,14 +1,16 @@
+*{
+    color:  sandybrown;
+}
 .search{
     padding: 20px;
     background-image: linear-gradient(90deg, tomato, black);
     text-align: center;
     margin-top: 200px;
 }
-body{
+body {
+    
     background-image: linear-gradient(90deg, black,brown);
     
-    
-    color: burlywood;
 }
 #hungryh1{
     text-align: center;
@@ -36,6 +38,8 @@ body{
 }
 #menuDetail{
     margin-top: 10px;
+    text-align: center;
+    
 }
 #menuDetail img{
     width: 20%;
