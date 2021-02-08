@@ -2,9 +2,6 @@ const searchBtn = document.getElementById('search-btn');
 searchBtn.addEventListener('click', function () {
     const input = document.getElementById('search-input');
 
-
-    // console.log(inputValue);
-
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${input.value}`)
         .then(res => res.json())
         .then(data => displayMenu(data.meals));
@@ -15,14 +12,8 @@ searchBtn.addEventListener('click', function () {
 
 })
 
-
-// fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-//     .then(res => res.json())
-//     .then(data => displayMenu(data.categories));
-
-
 const displayMenu = menus => {
-    //  console.log(menus);
+    // console.log(menus);
     const menusDiv = document.getElementById("menus");
 
     menus.forEach(menu => {
@@ -37,26 +28,32 @@ const displayMenu = menus => {
 
         menuDiv.innerHTML = menuInfo;
         menusDiv.appendChild(menuDiv);
-        menusDiv.onclick = () => {
+        menuDiv.onclick = () => {
             displayMenuDetails(`${menu.strMeal}`);
-        }
-    });
+            document.getElementById('menuDetail').innerHTML = '';
+        };
+    }
+    );
 }
 
 const displayMenuDetails = name => {
+    // console.log(name);
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`
     fetch(url)
         .then(res => res.json())
-        .then(data => renderMenuInfo(data.meals[0]));
+             
+        .then(data => renderMenuInfo(data.meals[0])); 
+             
+        
 
 }
 const renderMenuInfo = menu => {
-    // console.log(menu);
+    console.log(menu);
     const menuDiv = document.getElementById('menuDetail');
     const ingredients = `
     <img  src='${menu.strMealThumb}'>
     <h1>${menu.strMeal}</h1>
-    <h4> Details</h4>
+    <h3> Ingredient</h3>
     <ul class="gradients-list">
     <li class="item-list">${menu.strIngredient1}</li>
     <li class="item-list">${menu.strIngredient2}</li>
