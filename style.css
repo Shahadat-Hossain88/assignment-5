@@ -39,7 +39,10 @@ body {
 #menuDetail{
     margin-top: 10px;
     text-align: center;
-    
+
+}
+#alert-div{
+    text-align: center;
 }
 #menuDetail img{
     width: 20%;

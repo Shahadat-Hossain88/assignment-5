@@ -19,14 +19,15 @@ const displayMenu = menus => {
     const menusDiv = document.getElementById("menus");
     const input = document.getElementById('search-input').value;
 
-    if (menus == input) {
+    if (menus == null) {
         const alertDiv = document.getElementById('alert-div');
         
         alertDiv.className = 'alert';
 
         const alertInfo = ` 
-             <h1 class=""> ${menu}</h1>
+             <h1 class=""> ${input}</h1>
              <p>NOT FOUND</p>
+             <p>Search valid Name or Letter</p>
              
          `;
          
